@@ -1,3 +1,5 @@
+import argparse
+
 import usb.core
 import usb
 
@@ -19,8 +21,6 @@ dev.set_configuration()
 # get an endpoint instance
 cfg = dev.get_active_configuration()
 intf = cfg[(0,0)]
-
-print(intf)
 
 # get the BULK OUT descriptor
 epo = usb.util.find_descriptor(
@@ -64,13 +64,30 @@ def initialize_device (mode='left', speed=3, text_length=1, flash=0, lamp=0):
 
     epo.write(initialization_code)
 
-def write_text (text, mode, speed, flash):
+def write_text (text, mode, speed, flash, lamp):
     text_length = len(text)
 
-    initialize_device(mode, speed, text_length=text_length, flash=flash)
+    initialize_device(mode, speed, text_length=text_length, flash=flash, lamp=lamp)
 
     data = char_to_pixels.get_block_values(text)
 
     epo.write(data)
 
-write_text(text='HELLO', mode='centered', speed=2, flash=0x01)
+    print('Wrote text to LEDs')
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Write text to LED nametag')
+
+    parser.add_argument("text")
+    parser.add_argument("--mode")
+    parser.add_argument("--speed")
+    parser.add_argument("--flash")
+    parser.add_argument("--lamp")
+    args = parser.parse_args()
+
+    mode = args.mode or 'centered'
+    speed = int(args.speed) if args.speed else 4
+    flash = int(args.flash) if args.flash else 0x00
+    lamp = int(args.lamp) if args.lamp else 0x00
+
+    write_text(args.text, mode=mode, speed=speed, flash=flash, lamp=lamp)
