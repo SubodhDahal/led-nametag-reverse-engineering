@@ -15,6 +15,10 @@ def char_to_pixels(text, path='./advanced_led_board-7.ttf', fontsize=14):
     arr = arr[(arr != 0).any(axis=1)]
     return arr
 
+'''
+Draw the text using specified font and return the pixel
+values for the blocks
+'''
 def get_block_values(text):
     retval = []
     for character in text:
@@ -29,13 +33,14 @@ def get_block_values(text):
             value = int(value, 2)
             retval.append(value)
 
+        # Add empty pixels as a padding if the number of digits
+        # for the block is less than the rows of the LED
         if (len(retval) % 11 != 0):
             remaining_lines = 11 - len(retval) % 11
 
             for i in range(0, remaining_lines):
                 retval.append(0x00)
 
-        print(retval)
     return retval
 
 if __name__ == '__main__':

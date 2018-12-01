@@ -1,6 +1,6 @@
 # Nametag Reverse Engineering
 
-Reverse-engineering a LED nametag display to be programmed using a Linux system.
+Reverse-engineering a [LED nametag display](https://led-tag.sertronics.shop) to be programmed using a Linux system.
 
 ![Demo video](./demo.gif)
 
@@ -10,6 +10,6 @@ The application to program the display in the nametag was available for Windows 
 
 ## Contributors
 
- - Lars Thestorf
- - Subodh Dahal
-
+ - [Lars Thestorf](https://github.com/Lars-Thestorf)
+ - [Subodh Dahal](https://github.com/SubodhDahal)
+  - Advanced LED Board-7 font by Sizenko Alexander
