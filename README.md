@@ -18,5 +18,5 @@ Example:
 
  - [Lars Thestorf](https://github.com/Lars-Thestorf)
  - [Subodh Dahal](https://github.com/SubodhDahal)
- - Raghava Vijayanagaram
+ - [Raghava Vijayanagaram](https://github.com/KannaRaghava)
  - Advanced LED Board-7 font by Sizenko Alexander
